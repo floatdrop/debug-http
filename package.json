@@ -27,7 +27,8 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "humanize-number": "0.0.2",
-    "monkeypatch": "^1.0.0"
+    "monkeypatch": "^1.0.0",
+    "object-assign": "^4.0.1"
   },
   "devDependencies": {
     "ava": "^0.3.0",

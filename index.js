@@ -5,6 +5,7 @@ var urlFormat = require('url').format;
 var humanize = require('humanize-number');
 var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
+var objectAssign = require('object-assign');
 
 var colorCodes = {
 	5: 'red',
@@ -21,15 +22,13 @@ function time(start) {
 }
 
 function defaultHandler(request, options, cb) {
-	if (!options.protocol) {
-		options.protocol = 'http:';
+	var opts = objectAssign({protocol: 'http'}, options);
+
+	if (opts.path) {
+		opts.pathname = opts.path;
 	}
 
-	if (options.path) {
-		options.pathname = options.path;
-	}
-
-	var url = urlFormat(options);
+	var url = urlFormat(opts);
 	var start = new Date();
 
 	console.log(chalk.gray('      --> ') + url);
