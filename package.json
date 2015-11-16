@@ -25,6 +25,8 @@
     "requests"
   ],
   "dependencies": {
+    "chalk": "^1.1.1",
+    "humanize-number": "0.0.2",
     "monkeypatch": "^1.0.0"
   },
   "devDependencies": {

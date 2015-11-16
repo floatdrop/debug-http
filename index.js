@@ -1,8 +1,24 @@
 'use strict';
 
 var http = require('http');
-var url = require('url');
+var urlFormat = require('url').format;
+var humanize = require('humanize-number');
+var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
+
+var colorCodes = {
+	5: 'red',
+	4: 'yellow',
+	3: 'cyan',
+	2: 'green',
+	1: 'green'
+};
+
+function time(start) {
+	var delta = new Date() - start;
+	delta = delta < 10000 ? delta + 'ms' : Math.round(delta / 1000) + 's';
+	return humanize(delta);
+}
 
 function defaultHandler(request, options, cb) {
 	if (!options.protocol) {
@@ -13,15 +29,20 @@ function defaultHandler(request, options, cb) {
 		options.pathname = options.path;
 	}
 
-	console.log('    --> ' + url.format(options));
+	var url = urlFormat(options);
+	var start = new Date();
 
-	var req = request(options, cb);
+	console.log(chalk.gray('      --> ') + url);
 
-	req.on('response', function (response) {
-		console.log(response.statusCode + ' <-- ' + url.format(options));
-	});
-
-	return req;
+	return request(options, cb)
+		.on('response', function (response) {
+			var status = response.statusCode;
+			var s = status / 100 | 0;
+			console.log('  ' + chalk[colorCodes[s]](status) + ' <-- ' + url + ' ' + chalk.gray(time(start)));
+		})
+		.on('error', function (err) {
+			console.log('  ' + chalk.red('xxx') + ' <-- ' + url + ' ' + chalk.red(err.message));
+		});
 }
 
 module.exports = function debugHttp(fn) {
