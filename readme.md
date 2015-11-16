@@ -2,22 +2,19 @@
 
 > Debug HTTP/HTTPS requests in Node.js
 
-<h1 align="center"><img width="602" alt="screen shot 2015-11-16 at 14 36 07" src="https://cloud.githubusercontent.com/assets/365089/11178569/6ea28c66-8c6f-11e5-8170-fc30022000f7.png"></h1>
-
 ## Install
 
 ```
 $ npm install --save debug-http
 ```
 
-
 ## Usage
+
+<img width="300" alt="6ea28c66-8c6f-11e5-8170-fc30022000f7" src="https://cloud.githubusercontent.com/assets/365089/11191529/7f703a2c-8cbd-11e5-80fc-1d6f895986cc.png" align="right">
 
 ```js
 const debugHttp = require('debug-http');
-
 debugHttp();
-//=> Outputs every HTTP/HTTPS request in console
 ```
 
 
