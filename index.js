@@ -2,6 +2,7 @@
 
 var http = require('http');
 var urlFormat = require('url').format;
+var urlParse = require('url-parse-lax');
 var humanize = require('humanize-number');
 var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
@@ -22,7 +23,10 @@ function time(start) {
 }
 
 function defaultHandler(request, options, cb) {
-	var opts = objectAssign({protocol: 'http'}, options);
+	var opts = objectAssign(
+		{protocol: 'http'},
+		typeof options === 'string' ? urlParse(options) : options
+	);
 
 	if (opts.path) {
 		opts.pathname = opts.path;
