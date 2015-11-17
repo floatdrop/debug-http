@@ -35,16 +35,16 @@ function defaultHandler(request, options, cb) {
 	var url = urlFormat(opts);
 	var start = new Date();
 
-	console.log(chalk.gray('      --> ') + url);
+	console.log(chalk.gray('      → ') + url);
 
 	return request(options, cb)
 		.on('response', function (response) {
 			var status = response.statusCode;
 			var s = status / 100 | 0;
-			console.log('  ' + chalk[colorCodes[s]](status) + ' <-- ' + url + ' ' + chalk.gray(time(start)));
+			console.log('  ' + chalk[colorCodes[s]](status) + ' ← ' + url + ' ' + chalk.gray(time(start)));
 		})
 		.on('error', function (err) {
-			console.log('  ' + chalk.red('xxx') + ' <-- ' + url + ' ' + chalk.red(err.message));
+			console.log('  ' + chalk.red('xxx') + ' ← ' + url + ' ' + chalk.red(err.message));
 		});
 }
 
