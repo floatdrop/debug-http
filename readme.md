@@ -10,7 +10,7 @@ $ npm install --save debug-http
 
 ## Usage
 
-<img width="300" alt="6ea28c66-8c6f-11e5-8170-fc30022000f7" src="https://cloud.githubusercontent.com/assets/365089/11191529/7f703a2c-8cbd-11e5-80fc-1d6f895986cc.png" align="right">
+<img width="350" align="right" src="https://cloud.githubusercontent.com/assets/365089/11211147/24d6c530-8d4f-11e5-8eb3-2c7729d91ef2.png">
 
 ```js
 const debugHttp = require('debug-http');
