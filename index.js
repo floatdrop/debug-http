@@ -2,11 +2,9 @@
 
 var http = require('http');
 var urlFormat = require('url').format;
-var urlParse = require('url-parse-lax');
 var humanize = require('humanize-number');
 var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
-var objectAssign = require('object-assign');
 
 var colorCodes = {
 	5: 'red',
@@ -23,7 +21,7 @@ function time(start) {
 }
 
 function defaultHandler(request, options, cb) {
-	var url = typeof options === 'string' ? options : urlFormat(opts);
+	var url = typeof options === 'string' ? options : urlFormat(options);
 	var start = new Date();
 
 	console.log(chalk.gray('      → ') + url);
