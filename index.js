@@ -23,16 +23,7 @@ function time(start) {
 }
 
 function defaultHandler(request, options, cb) {
-	var opts = objectAssign(
-		{protocol: 'http'},
-		typeof options === 'string' ? urlParse(options) : options
-	);
-
-	if (opts.path) {
-		opts.pathname = opts.path;
-	}
-
-	var url = urlFormat(opts);
+	var url = typeof options === 'string' ? options : urlFormat(opts);
 	var start = new Date();
 
 	console.log(chalk.gray('      → ') + url);
