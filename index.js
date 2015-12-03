@@ -24,7 +24,7 @@ function defaultHandler(request, options, cb) {
 	var url = typeof options === 'string' ? options : urlFormat(options);
 	var start = new Date();
 
-	console.log(chalk.gray('      → ') + url);
+	setImmediate(console.log, chalk.gray('      → ') + url);
 
 	return request(options, cb)
 		.on('response', function (response) {
