@@ -1,7 +1,7 @@
 'use strict';
 
 var http = require('http');
-var urlFormat = require('url').format;
+var urlParse = require('url').parse;
 var humanize = require('humanize-number');
 var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
@@ -21,7 +21,7 @@ function time(start) {
 }
 
 function defaultHandler(request, options, cb) {
-	var url = typeof options === 'string' ? options : urlFormat(options);
+	var url = (typeof options === 'string' ? urlParse(options) : options).href;
 	var start = new Date();
 
 	setImmediate(console.log, chalk.gray('      → ' + url));
