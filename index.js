@@ -5,6 +5,7 @@ var urlParse = require('url').parse;
 var humanize = require('humanize-number');
 var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
+var EventEmitter = require('events').EventEmitter;
 
 var colorCodes = {
 	5: 'red',
@@ -27,11 +28,18 @@ function defaultHandler(request, options, cb) {
 	var method = (options.method || 'GET').toUpperCase();
 	var signature = method + ' ' + url;
 	var start = new Date();
+	var wasHandled = typeof cb === 'function';
 
 	setImmediate(console.log, chalk.gray('      → ' + signature));
 
 	return request(options, cb)
 		.on('response', function (response) {
+			// Workaround for res._dump in Node.JS http client
+			// https://github.com/nodejs/node/blob/20285ad17755187ece16b8a5effeaa87f5407da2/lib/_http_client.js#L421-L427
+			if (!wasHandled && EventEmitter.listenerCount(response.req, 'response') === 0) {
+				response.resume();
+			}
+
 			var status = response.statusCode;
 			var s = status / 100 | 0;
 			console.log('  ' + chalk[colorCodes[s]](status) + ' ← ' + signature + ' ' + chalk.gray(time(start)));
