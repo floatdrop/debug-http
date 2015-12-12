@@ -4,7 +4,7 @@ import https from 'https';
 import url from 'url';
 import debugHttp from '../';
 
-test('calls handler on http request', t => {
+test.cb('calls handler on http request', t => {
 	var called = 0;
 
 	debugHttp(function (request, options, cb) {

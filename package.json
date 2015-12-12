@@ -32,8 +32,8 @@
     "url-parse-lax": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.3.0",
-    "xo": "^0.10.0"
+    "ava": "^0.7.0",
+    "xo": "^0.11.0"
   },
   "xo": {
     "ignores": [
