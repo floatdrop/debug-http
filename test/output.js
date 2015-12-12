@@ -1,6 +1,5 @@
 import test from 'ava';
 import http from 'http';
-import url from 'url';
 import debugHttp from '../';
 
 test('nice stuff', t => {
@@ -20,6 +19,5 @@ test('nice stuff', t => {
 		i++;
 	};
 
-	const req = http.request(url.parse('http://google.com'));
-	req.end();
+	http.get('http://google.com');
 });
