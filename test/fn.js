@@ -2,7 +2,7 @@ import test from 'ava';
 import http from 'http';
 import https from 'https';
 import url from 'url';
-import debugHttp from './';
+import debugHttp from '../';
 
 test('calls handler on http request', t => {
 	var called = 0;

@@ -21,8 +21,10 @@ function time(start) {
 }
 
 function defaultHandler(request, options, cb) {
-	var url = (typeof options === 'string' ? urlParse(options) : options).href;
-	var method = '[' + (options.method || 'GET').toUpperCase() + ']';
+	options = typeof options === 'string' ? urlParse(options) : options;
+
+	var url = options.href;
+	var method = (options.method || 'GET').toUpperCase();
 	var signature = method + ' ' + url;
 	var start = new Date();
 
