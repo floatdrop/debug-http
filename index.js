@@ -1,6 +1,7 @@
 'use strict';
 
 var http = require('http');
+var https = require('https');
 var urlParse = require('url').parse;
 var humanize = require('humanize-number');
 var chalk = require('chalk');
@@ -57,4 +58,5 @@ module.exports = function debugHttp(fn) {
 	}
 
 	monkeypatch(http, 'request', fn);
+	monkeypatch(https, 'request', fn);
 };
