@@ -1,6 +1,6 @@
 {
   "name": "debug-http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Debug HTTP/HTTPS requests in Node.js",
   "license": "MIT",
   "repository": "floatdrop/debug-http",
