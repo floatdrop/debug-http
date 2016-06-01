@@ -1,7 +1,7 @@
-import test from 'ava';
 import http from 'http';
 import https from 'https';
 import url from 'url';
+import test from 'ava';
 import debugHttp from '../';
 
 test.cb('calls handler on http request', t => {

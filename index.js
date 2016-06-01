@@ -2,10 +2,10 @@
 
 var http = require('http');
 var urlParse = require('url').parse;
+var EventEmitter = require('events').EventEmitter;
 var humanize = require('humanize-number');
 var chalk = require('chalk');
 var monkeypatch = require('monkeypatch');
-var EventEmitter = require('events').EventEmitter;
 
 var colorCodes = {
 	5: 'red',
