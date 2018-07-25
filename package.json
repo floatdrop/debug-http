@@ -4,6 +4,7 @@
   "description": "Debug HTTP/HTTPS requests in Node.js",
   "license": "MIT",
   "repository": "floatdrop/debug-http",
+  "@types": "./index.d.ts",
   "author": {
     "name": "Vsevolod Strukchinsky",
     "email": "floatdrop@gmail.com",
